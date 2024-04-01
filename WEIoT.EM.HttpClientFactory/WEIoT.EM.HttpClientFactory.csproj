@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
+		<PackageReference Include="prometheus-net" Version="8.0.1" />
+		<PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+		<PackageReference Include="Walmart.EventManager.Common.Packages" Version="2023.9.20.609" />
+		<PackageReference Include="WEIoT.EM.TenancyHelper" Version="3.2023.16.605" />
+		<PackageReference Include="WEIoT.EM.ServiceRegistry.Helper" Version="2023.6.12.719" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Walmart.EventManager.Common.Packages" />
+		<None Remove="Validators\" />
+		<None Remove="Exceptions\" />
+		<None Remove="Extensions\" />
+	</ItemGroup>
+</Project>

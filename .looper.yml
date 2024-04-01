@@ -1,0 +1,91 @@
+tools:
+  nuget: 4.1.0
+  dotnetsdk: 6.0
+
+
+envs:
+  global:
+    variables:
+      hosted: https://repository.walmart.com/repository/nuget-hosted/
+      snapshot: https://repository.walmart.com/repository/nuget-snapshot/
+      teamChannel: "weiot-wcnp-alerts"
+      projectSubPath: "WEIoT.EM.HttpClientFactory"
+  commonPackagesclient:
+    variables:
+      projectPath: WEIoT.EM.HttpClientFactory
+
+
+triggers:
+  push: disabled
+  pr: disabled
+
+flows:
+  default:
+    - call: mergeAll
+  # Notify build result on slack 
+  slackNotification:
+    - slack.postMessage:
+        message: "${JOB_NAME} build happened. Check the status below!"
+        channelId: ${teamChannel}
+        iconEmoji: ":coolstorydp:"
+        attachments:
+          - fallback: ${BUILD_URL}
+            actions:
+            - type: "button"
+              text: "Build info and log"
+              url: ${BUILD_URL}
+
+  # Set variables from csproj file
+  setVariables:
+    - exposeVars(source = xml, file = src/${projectPath}/${projectSubPath}/${projectSubPath}.csproj):
+        vars:
+          AppPackageId: Project/PropertyGroup/PackageId
+          AppVersion: Project/PropertyGroup/Version
+
+  # Publish nuget packages
+  pushNuget:
+    try:
+      - var(Version):
+          powershell (Get-Date -Format "yyyy.MM.dd.HHmm")
+      - dotnet pack ${WORKSPACE}\\src\\${projectPath}\\${projectSubPath}\\${projectSubPath}.csproj /p:Version=$Version -c Release
+      - nuget push ${WORKSPACE}\\src\\${projectPath}\\${projectSubPath}\\bin\Release\*.nupkg -Source ${hosted}
+      - nuget push ${WORKSPACE}\\src\\${projectPath}\\${projectSubPath}\\bin\Release\*.nupkg -Source ${snapshot}
+    catch:
+      - echo 'failed publishing nuget for ${projectPath}.*.nupkg'
+      - fail('Error performing operation - $flowErrorMessage')
+
+
+  # Restore, test, and build a project
+  prBuild:
+    - declare(AppPackageId, VersionPrefix)
+    - call: setVariables(projectPath = ${projectPath})
+    - call: setVariables(projectSubPath = ${projectSubPath})
+    - echo 'Building $projectPath Version ${VersionPrefix}.${BUILD_NUMBER}'
+    - dotnet restore ${WORKSPACE}//src//${projectPath}/${projectSubPath}/${projectSubPath}.csproj
+    - dotnet build ${WORKSPACE}//src//${projectPath}/${projectSubPath}/${projectSubPath}.csproj -c Release --no-restore --version-suffix ${BUILD_NUMBER}
+
+  mergeBuild:
+    try:
+      - call: prBuild(projectPath = ${projectPath})
+    finally:
+      - declare(AppPackageId, VersionPrefix)
+      # Getting project configuration variables
+      - call: setVariables(projectPath = ${projectPath})
+      - call: setVariables(projectSubPath = ${projectSubPath})
+      # Checking to if the latest version published to nuget is the same as the current target version
+      - var(hasDiff):
+          powershell ($(git diff HEAD HEAD~ --name-only) -split '/' -contains '${projectPath}')
+      - echo $hasDiff
+      - call: pushNuget(projectPath = ${projectPath})
+
+  buildAll:
+    - powershell $(git diff HEAD HEAD~ --name-only)
+    - parallel:
+      - call: prBuild(commonPackagesclient)
+    - call: slackNotification
+
+  mergeAll:
+    - powershell $(git diff HEAD HEAD~ --name-only)
+    - parallel:
+      - call: mergeBuild(commonPackagesclient)
+    - call: slackNotification

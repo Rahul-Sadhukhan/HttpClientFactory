@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\WEIoT.EM.HttpClientFactory.TestAPI.props" />
+</Project>

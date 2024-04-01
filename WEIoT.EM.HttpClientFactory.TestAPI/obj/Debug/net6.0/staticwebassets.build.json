@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "4FnlWI58A50QafxxWXDiGttOJKhq6pl/VrZfVAf8lS4=",
+  "Source": "WEIoT.EM.HttpClientFactory.TestAPI",
+  "BasePath": "_content/WEIoT.EM.HttpClientFactory.TestAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

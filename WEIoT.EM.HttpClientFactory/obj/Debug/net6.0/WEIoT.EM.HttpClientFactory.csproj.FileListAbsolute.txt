@@ -1,0 +1,12 @@
+C:\Walmart Projects\WEIoT-SB-Library-Repository-2\src\WEIoT.EM.HttpClientFactory\WEIoT.EM.HttpClientFactory\obj\Debug\net6.0\WEIoT.EM.HttpClientFactory.csproj.AssemblyReference.cache
+C:\Walmart Projects\WEIoT-SB-Library-Repository-2\src\WEIoT.EM.HttpClientFactory\WEIoT.EM.HttpClientFactory\obj\Debug\net6.0\WEIoT.EM.HttpClientFactory.GeneratedMSBuildEditorConfig.editorconfig
+C:\Walmart Projects\WEIoT-SB-Library-Repository-2\src\WEIoT.EM.HttpClientFactory\WEIoT.EM.HttpClientFactory\obj\Debug\net6.0\WEIoT.EM.HttpClientFactory.AssemblyInfoInputs.cache
+C:\Walmart Projects\WEIoT-SB-Library-Repository-2\src\WEIoT.EM.HttpClientFactory\WEIoT.EM.HttpClientFactory\obj\Debug\net6.0\WEIoT.EM.HttpClientFactory.AssemblyInfo.cs
+C:\Walmart Projects\WEIoT-SB-Library-Repository-2\src\WEIoT.EM.HttpClientFactory\WEIoT.EM.HttpClientFactory\obj\Debug\net6.0\WEIoT.EM.HttpClientFactory.csproj.CoreCompileInputs.cache
+C:\Walmart Projects\WEIoT-SB-Library-Repository-2\src\WEIoT.EM.HttpClientFactory\WEIoT.EM.HttpClientFactory\bin\Debug\net6.0\WEIoT.EM.HttpClientFactory.deps.json
+C:\Walmart Projects\WEIoT-SB-Library-Repository-2\src\WEIoT.EM.HttpClientFactory\WEIoT.EM.HttpClientFactory\bin\Debug\net6.0\WEIoT.EM.HttpClientFactory.dll
+C:\Walmart Projects\WEIoT-SB-Library-Repository-2\src\WEIoT.EM.HttpClientFactory\WEIoT.EM.HttpClientFactory\bin\Debug\net6.0\WEIoT.EM.HttpClientFactory.pdb
+C:\Walmart Projects\WEIoT-SB-Library-Repository-2\src\WEIoT.EM.HttpClientFactory\WEIoT.EM.HttpClientFactory\obj\Debug\net6.0\WEIoT.EM.HttpClientFactory.dll
+C:\Walmart Projects\WEIoT-SB-Library-Repository-2\src\WEIoT.EM.HttpClientFactory\WEIoT.EM.HttpClientFactory\obj\Debug\net6.0\refint\WEIoT.EM.HttpClientFactory.dll
+C:\Walmart Projects\WEIoT-SB-Library-Repository-2\src\WEIoT.EM.HttpClientFactory\WEIoT.EM.HttpClientFactory\obj\Debug\net6.0\WEIoT.EM.HttpClientFactory.pdb
+C:\Walmart Projects\WEIoT-SB-Library-Repository-2\src\WEIoT.EM.HttpClientFactory\WEIoT.EM.HttpClientFactory\obj\Debug\net6.0\ref\WEIoT.EM.HttpClientFactory.dll
